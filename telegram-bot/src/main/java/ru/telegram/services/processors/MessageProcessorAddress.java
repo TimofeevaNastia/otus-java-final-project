@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import ru.rate.model.BankAddressRequest;
-import ru.telegram.clients.RateServiceClientImpl;
+import ru.telegram.clients.BankServiceClientImpl;
 import ru.telegram.model.getUpdates.GetUpdatesResponse;
 import ru.telegram.model.sendMessage.Keyboard;
 import ru.telegram.model.sendMessage.ReplyMarkup;
@@ -22,7 +22,7 @@ import static java.util.Optional.ofNullable;
 @Slf4j
 @AllArgsConstructor
 public class MessageProcessorAddress implements MessageProcessor {
-    private final RateServiceClientImpl rateServiceClientImpl;
+    private final BankServiceClientImpl bankServiceClientImpl;
     private final BankRepository bankRepository;
     private final UserRepository userRepository;
     private final ApplicationContext applicationContext;
@@ -46,7 +46,7 @@ public class MessageProcessorAddress implements MessageProcessor {
         request.setCodeBank(codeBank).setNameBank(bankRepository.findNameBankByCode(codeBank));
         ofNullable(message.getLocation()).ifPresent(x -> request.setLatitude(location.getLatitude()).setLongitude(location.getLongitude()));
         request.setAddressString(msgText);
-        var response = rateServiceClientImpl.getBankAddressesWithCurrency(request);
+        var response = bankServiceClientImpl.getBankAddressesWithCurrency(request);
         if (response.getError() != null) {
             var error = response.getError().getText();
             var errorFull = ofNullable(response.getError().getDescription()).orElse("");

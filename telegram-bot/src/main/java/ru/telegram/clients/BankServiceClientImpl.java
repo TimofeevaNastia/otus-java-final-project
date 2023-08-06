@@ -2,7 +2,6 @@ package ru.telegram.clients;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.ehcache.Cache;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-public class RateServiceClientImpl implements RateServiceClient {
+public class BankServiceClientImpl implements BankServiceClient {
     private final HttpClient httpClient;
     private final Cache<LocalDate, BankRateResponse> currencyRateCache;
     private final ObjectMapper objectMapper;

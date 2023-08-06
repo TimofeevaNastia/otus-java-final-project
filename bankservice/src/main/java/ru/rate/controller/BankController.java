@@ -23,12 +23,7 @@ public class BankController {
     @GetMapping("/currencyRate/{currency}")
     public BankRateResponse getCurrencyRate(@PathVariable("currency") String currency) {
         log.info("getCurrencyRate, currency:{}", currency);
-
         var rate = bankService.getCurrencyRate(currency);
-//        List<BankRate> bankRates = new ArrayList<>();
-//        bankRates.add(new BankRate().setNameBank("Альфа банк").setCodeBank("alfa").setBuyByClientRate(new BigDecimal("101.89")).setSellByClientRate(new BigDecimal("96.55")));
-//        bankRates.add(new BankRate().setNameBank("Сбербанк").setCodeBank("sber").setBuyByClientRate(new BigDecimal("104.80")).setSellByClientRate(new BigDecimal("95.20")));
-//        var rate = new BankRateResponse().setBanks(bankRates);
         log.info("rate:{}", rate);
         return rate;
     }
@@ -74,31 +69,4 @@ public class BankController {
         log.info("addresses:{}", response.getData().getBankServiceAddressesResponse());
         return response;
     }
-
-//    @PostMapping("/bank/alfa/addresses")
-//    public BankServiceResponse getOfficesAlfa(@RequestBody BankAddressRequest request) {
-//        try {
-//        Document doc = Jsoup.connect("https://alfabank.ru/help/currency/office-list/")
-//                .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36")
-////                .referrer("http://www.google.com")
-//                .get();
-//        Elements listNews = doc.select("[data-test-id='dollar-euro'] li");
-//        for (Element element : listNews.select("a"))
-//            System.out.println(element.text());
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    @GetMapping("/actualRate/{currency}")
-//    public BankRateResponse clientsListView(Model model) {
-//        rateService
-//        List<Client> clients = clientService.findAll();
-//        model.addAttribute("clients", clients);
-//        model.addAttribute("client", clients.size() > 0 ? clients.get(0) : null);
-//        model.addAttribute("error", "");
-//        return "clients";
-//    }
-
 }

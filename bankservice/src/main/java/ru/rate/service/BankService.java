@@ -58,16 +58,6 @@ public class BankService {
         }
         var addresses = getActualAddressesFromBank(bank, cityCurrent);
         return addressService.getNearestAddresses(addressCurrent, addresses);
-//        return addresses;
-//        bankServiceDb.getActualBanks().forEach(x -> {
-//            var bank = bankFactory.getBank(x.getCode());
-//            var addresses = bank.getOfficesWithCurrency();
-//
-//
-//            addressService.getNearestAddresses()
-//            bankServiceDb.saveAddressBank(x.setAddresses(finalListAddr));
-//        });
-//        return bankServiceDb.getAddressBankByCity(request.getCodeBank(), city);
     }
 
     private Address getAddressFromString(BankAddressRequest request) {
@@ -84,9 +74,8 @@ public class BankService {
 //        Pattern pattern = Pattern.compile("г. ,");
 //        Matcher matcher = pattern.matcher(address);
             return new Address().setCity(city).setStreet(street).setHouse(house).setAddressString(address);
-        } else {
-            return new Address().setLatitude(request.getLatitude()).setLongitude(request.getLongitude());
         }
+        return new Address().setLatitude(request.getLatitude()).setLongitude(request.getLongitude());
     }
 
     private List<Address> getActualAddressesFromBank(Bank bank, String city) {

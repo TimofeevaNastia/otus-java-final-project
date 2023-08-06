@@ -6,9 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.ehcache.Cache;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-import ru.rate.model.BankRate;
 import ru.rate.model.BankRateResponse;
-import ru.telegram.clients.RateServiceClientImpl;
+import ru.telegram.clients.BankServiceClientImpl;
 import ru.telegram.model.getUpdates.GetUpdatesResponse;
 import ru.telegram.model.sendMessage.Keyboard;
 import ru.telegram.model.sendMessage.ReplyMarkup;
@@ -21,7 +20,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service("messageProcessorCalculateSum")
@@ -29,7 +27,7 @@ import java.util.regex.Pattern;
 @AllArgsConstructor
 public class MessageProcessorCalculateSum implements MessageProcessor {
     private final Cache<LocalDate, BankRateResponse> currencyRateCache;
-    private final RateServiceClientImpl rateServiceClientImpl;
+    private final BankServiceClientImpl bankServiceClientImpl;
     private final ApplicationContext applicationContext;
     private final UserRepository userRepository;
 
@@ -51,7 +49,7 @@ public class MessageProcessorCalculateSum implements MessageProcessor {
                 var currency = matcher.group(2);
                 var bankRateResponse = currencyRateCache.get(LocalDate.now());
                 if (bankRateResponse == null) {
-                    bankRateResponse = rateServiceClientImpl.getActualRate(currency);
+                    bankRateResponse = bankServiceClientImpl.getActualRate(currency);
                     currencyRateCache.put(LocalDate.now(), bankRateResponse);
                 }
 

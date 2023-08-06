@@ -43,7 +43,7 @@ public class AlfaClient extends BaseRequest implements HttpBankClient {
     }
 
     @Override
-    public List<String> getOfficesWithCurrency() {
+    public List<String> getOfficesWithCurrency(String city) {
         var url = String.format(OFFICE_LIST, server);
         var result = new ArrayList<String>();
         try {

@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import ru.rate.model.BankRateResponse;
-import ru.telegram.clients.RateServiceClientImpl;
+import ru.telegram.clients.BankServiceClientImpl;
 import ru.telegram.model.db.UserData;
 import ru.telegram.model.getUpdates.GetUpdatesResponse;
 import ru.telegram.model.sendMessage.Keyboard;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @AllArgsConstructor
 public class MessageProcessorRate implements MessageProcessor {
-    private final RateServiceClientImpl rateServiceClientImpl;
+    private final BankServiceClientImpl bankServiceClientImpl;
     private final ApplicationContext applicationContext;
     private final UserRepository userRepository;
 
@@ -40,7 +40,7 @@ public class MessageProcessorRate implements MessageProcessor {
             var keyboardSection = new ArrayList<Keyboard>();
             keyboardSection.add(new Keyboard().setText(Commands.ANOTHER_CURRENCY.getMessage()));
             keyboardList.add(keyboardSection);
-            BankRateResponse bankRate = rateServiceClientImpl.getActualRate(currency);
+            BankRateResponse bankRate = bankServiceClientImpl.getActualRate(currency);
             result.setText(makeMessage(bankRate, action, currency));
             result.setChatId(message.getChat().getId());
             result.setReplyMarkup(new ReplyMarkup()

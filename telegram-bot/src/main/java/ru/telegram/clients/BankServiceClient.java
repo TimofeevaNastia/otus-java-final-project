@@ -3,7 +3,7 @@ package ru.telegram.clients;
 
 import ru.rate.model.*;
 
-public interface RateServiceClient {
+public interface BankServiceClient {
     BankRateResponse getActualRate(String currencyCode);
 
     BankServiceResponse getBankAddressesWithCurrency(BankAddressRequest request);

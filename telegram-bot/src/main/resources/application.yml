@@ -12,8 +12,8 @@ logging:
 
 telegram:
   url: https://api.telegram.org
-  delay: 10000
-  period: 10000
+  delay: 3000
+  period: 3000
 
 bank-client:
   currency: "http://localhost:8082/api/v1/currencyRate"

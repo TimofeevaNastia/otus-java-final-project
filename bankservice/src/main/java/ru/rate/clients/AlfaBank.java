@@ -44,7 +44,7 @@ public class AlfaBank implements Bank {
 
     @Override
     public List<String> getOfficesWithCurrency(String city) {
-        var offices = alfaClient.getOfficesWithCurrency();
+        var offices = alfaClient.getOfficesWithCurrency("");
         var result = new ArrayList<String>();
         offices.forEach(x -> {
             String[] data = x.split(",");
