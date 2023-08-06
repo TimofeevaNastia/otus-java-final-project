@@ -1,0 +1,12 @@
+package ru.rate.config;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.List;
+
+@Data
+@ConfigurationProperties(prefix = "address")
+public class AddressUrlConfig {
+    private String url;
+}

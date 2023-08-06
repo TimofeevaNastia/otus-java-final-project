@@ -1,0 +1,13 @@
+server:
+  host: http://localhost
+  port: 8083
+
+rest:
+  api: api
+  version: v1
+
+cache:
+  size: 365
+
+yandex:
+  url: "https://geocode-maps.yandex.ru/1.x"

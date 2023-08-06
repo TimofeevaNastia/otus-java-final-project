@@ -1,0 +1,17 @@
+###
+GET http://localhost:8082/api/v1/currencyRate/EUR
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+###
+POST http://localhost:8082/api/v1/bank/addresses
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "nameBank": "Альфа банк",
+    "codeBank": "alfa",
+    "addressString": "Москва, проспект Мира, 120"
+}

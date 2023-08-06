@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5430/telegrambotinfo
+    username: usr
+    password: pwd
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.jdbc.core.JdbcTemplate: TRACE
+
+telegram:
+  url: https://api.telegram.org
+  delay: 10000
+  period: 10000
+
+bank-client:
+  currency: "http://localhost:8082/api/v1/currencyRate"
+  addresses: "http://localhost:8082/api/v1/bank/addresses"
+
+cache:
+  size: 365

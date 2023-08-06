@@ -1,0 +1,26 @@
+###
+GET http://localhost:8083/api/v1/getAddress/53.149313+50.063093
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+###
+POST http://localhost:8083/api/v1/getNearestAddresses
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+[
+    {
+        "city" : "Самара",
+        "addressString": "Самара, Пугачевский тракт, 61"
+    },
+    {
+        "city" : "Самара",
+        "addressString": "Самара, Ново-садовая, 28"
+    },
+    {
+        "city" : "Самара",
+        "addressString": "Самара, Белорусская, 17"
+    }
+]

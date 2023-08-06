@@ -1,0 +1,6 @@
+rootProject.name = 'otus-java-final-project'
+include 'telegram-bot'
+include 'bankservice'
+include 'commons'
+include 'addressservice'
+

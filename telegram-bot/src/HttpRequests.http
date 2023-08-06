@@ -1,0 +1,42 @@
+###
+POST https://api.telegram.org/bot{tokenId}/getUpdates
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+   "offset": 0
+}
+
+###
+POST https://api.telegram.org/bot{tokenId}/sendMessage
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "chat_id": "1415957925",
+    "text": "Выберите один из вариантов",
+    "reply_markup": {
+        "keyboard": [
+            [
+                {
+                    "text": "Купить EUR"
+                },
+                {
+                    "text": "Купить USD"
+                }
+            ],
+            [
+                {
+                    "text": "Продать EUR"
+                },
+                {
+                    "text": "Продать USD"
+                }
+            ]
+        ],
+        "one_time_keyboard": true,
+        "resize_keyboard": true
+    }
+}

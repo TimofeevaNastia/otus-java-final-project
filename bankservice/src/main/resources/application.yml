@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5430/telegrambotinfo
+    username: usr
+    password: pwd
+  flyway:
+    enabled: true
+server:
+  host: http://localhost
+  port: 8082
+
+rest:
+  api: api
+  version: v1
+
+logging:
+  level:
+    org.springframework.jdbc.core.JdbcTemplate: TRACE
+
+cache:
+  size: 365
+
+bank:
+  banks:
+    - name: alfa
+      url: "https://alfabank.ru"
+
+    - name: sber
+      url: "http://www.sberbank.ru"
+
+address:
+  url: "http://localhost:8083/api/v1"
+
+management:
+  server:
+    port: 8090
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
